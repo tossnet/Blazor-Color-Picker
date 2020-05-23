@@ -1,0 +1,97 @@
+﻿﻿.color-picker-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    height: 100%;
+    width: auto;
+    margin: .5rem;
+    pointer-events: none;
+    overflow: auto;
+}
+
+
+﻿.color-picker-modal:target {
+    display: block;
+}
+
+
+@media (min-width: 576px) {
+    .color-picker-modal {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+
+.color-picker-content {
+    width: 608px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 12px #999;
+    -moz-box-shadow: 0 0 12px #999;
+    box-shadow: 0 0 12px #999;
+    overflow: hidden;
+}
+
+.color-picker-case {
+    width: 32px;
+    height: 32px;
+}
+
+    .color-picker-case:hover {
+        border: 1px solid #FFF;
+        cursor: pointer;
+    }
+
+
+.color-picker-palette {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 320px;
+}
+
+
+.show {
+    display: block;
+    animation-name: show-animation;
+    animation-duration: 0.5s;
+}
+
+@keyframes show-animation {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.color-picker-header {
+    background-color: #d9d9d9;
+    padding: 3px;
+    color: white;
+}
+
+.color-picker-title {
+    margin: 5px;
+    display: inline-block;
+}
+
+.color-picker-close-button {
+    float: right;
+    margin: 5px;
+    cursor: pointer;
+}
+
+    .color-picker-close-button:hover {
+        color: red;
+    }
