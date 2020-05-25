@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>fix</PackageReleaseNotes>
+    <PackageReleaseNotes>Add a .buttonColor Style to CSS</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <PackageTags>blazor color picker material component</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
