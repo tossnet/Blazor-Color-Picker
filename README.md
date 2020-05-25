@@ -38,10 +38,9 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 <h1>Hello, world!</h1>
 
-<button class="btn btn-primary" @onclick="OpenModal">Choose Color</button>
-
-<div style="background-color:@color;width:75px;height:75px;">
-</div>
+<button class="btn btn-primary" @onclick="OpenModal">
+    <div style="background-color:@color;width:20px;height:20px;display:inline-block;vertical-align:middle;margin-bottom:2px;"></div> Select a Color
+</button>
 
 <ColorPicker Title="My Blazor ColorPicker" IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color">
 </ColorPicker>
