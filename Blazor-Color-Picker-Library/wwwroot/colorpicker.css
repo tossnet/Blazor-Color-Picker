@@ -1,4 +1,12 @@
-﻿﻿.color-picker-modal {
+﻿.buttonColor {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
+
+﻿.color-picker-modal {
     display: none;
     position: fixed;
     top: 0;
