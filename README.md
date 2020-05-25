@@ -1,4 +1,6 @@
 # Blazor-Color-Picker
+[![NuGet](https://img.shields.io/nuget/v/BlazorColorPic.svg)](https://www.nuget.org/packages/BlazorColorPic/)
+
 Sometimes HTML5 colorpicker doesn't suit me for an application. I prefer to offer the user a predefined color palette
 
 Opens a palette with the Material colors
@@ -7,7 +9,7 @@ Opens a palette with the Material colors
 
 
 Installation
-Latest version in here: NuGet
+Latest version in here: [![NuGet](https://img.shields.io/nuget/v/BlazorColorPic.svg)](https://www.nuget.org/packages/BlazorColorPic/)
 
 To Install
 
