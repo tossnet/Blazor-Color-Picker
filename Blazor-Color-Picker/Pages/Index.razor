@@ -1,14 +1,15 @@
 ﻿@page "/"
 @using BlazorColorPicker
 
-<h1>Hello, world!</h1>
+<a href="https://www.nuget.org/packages/BlazorColorPicker/"><img src="https://img.shields.io/nuget/v/BlazorColorPicker.svg" /></a>
+<br />
 
 <button class="btn btn-primary" @onclick="OpenModal">
     <div style="background-color:@color" class="buttonColor"></div> Select a Color
 </button>
 
 
-<ColorPicker Title="My Blazor ColorPicker" IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color">
+<ColorPicker IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color">
 </ColorPicker>
 
 @code {

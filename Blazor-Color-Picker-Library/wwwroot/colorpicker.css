@@ -26,12 +26,6 @@
 }
 
 
-@media (min-width: 576px) {
-    .color-picker-modal {
-        max-width: 500px;
-        margin: 1.75rem auto;
-    }
-}
 
 .color-picker-content {
     width: 608px;
@@ -103,3 +97,16 @@
     .color-picker-close-button:hover {
         color: red;
     }
+
+
+
+@media (max-width: 767px) {
+    .color-picker-palette {
+        flex-direction: row-reverse;
+        height: 608px;
+    }
+
+    .color-picker-content {
+        width: 320px;
+    }
+}

@@ -1,19 +1,22 @@
 ﻿<div class="color-picker @cssClass">
     <div class="color-picker-content">
-        <div class="color-picker-header">
-            <h5 class="color-picker-title">@Title</h5>
-            <span class="color-picker-close-button" @onclick="Close">X</span>
-        </div>
+        @if (!string.IsNullOrEmpty(Title))
+        {
+            <div class="color-picker-header">
+                <h5 class="color-picker-title">@Title</h5>
+                <span class="color-picker-close-button" @onclick="Close">X</span>
+            </div>
+        }
         <div class="color-picker-body">
             <div class="color-picker-palette">
                 @foreach (string item in colors)
                 {
-                <div class="color-picker-case text-center" style="background-color:@item" @onclick="() => ColorClick(item)">
-                    @if (MyColor == item)
-                    {
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
-                    }
-                </div>
+                    <div class="color-picker-case text-center" style="background-color:@item" @onclick="() => ColorClick(item)">
+                        @if (MyColor == item)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
+                        }
+                    </div>
                 }
             </div>
             @ModalBody
