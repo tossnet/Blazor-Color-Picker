@@ -5,7 +5,7 @@ Sometimes HTML5 colorpicker doesn't suit me for an application. I prefer to offe
 
 Opens a palette with the Material colors
 
-![Blazor Color Picker](https://github.com/tossnet/Blazor-Color-Picker/blob/master/Blazor-Color-Picker/forGithubReadme/blazor-color-picker.png)
+![Blazor Color Picker](https://github.com/tossnet/Blazor-Color-Picker/blob/master/BlazorColorPicker.gif)
 
 
 # Installation
