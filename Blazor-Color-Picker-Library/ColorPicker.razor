@@ -8,7 +8,7 @@
             </div>
         }
         <div class="color-picker-body">
-            <div class="color-picker-palette">
+            <div class="color-picker-palette" style="@customStyle">
                 @foreach (string item in colors)
                 {
                     <div class="color-picker-case text-center" style="background-color:@item" @onclick="() => ColorClick(item)">
@@ -39,8 +39,15 @@
     public bool IsOpened { get; set; }
 
     [Parameter]
+    public string[] MyColorPallet { get; set; }
+
+    [Parameter]
+    public string OverwriteBackgroundColor { get; set; }
+
+    [Parameter]
     public EventCallback<string> Closed { get; set; }
 
+    private string customStyle => !string.IsNullOrWhiteSpace(OverwriteBackgroundColor) ? $"background-color:{OverwriteBackgroundColor}" : "";
     private string cssClass => IsOpened ? "show" : "hide";
 
     private List<string> colors = new List<string>();
@@ -49,6 +56,15 @@
     {
         #region COLORS LIST
         colors.Clear();
+
+        //My own color pallet
+        if (MyColorPallet != null && MyColorPallet.Count() > 0)
+        {
+            colors.AddRange(MyColorPallet);
+            return;
+        }
+
+        //The default colors
         // Red
         colors.Add("#FFEBED");
         colors.Add("#FFCDD2");
