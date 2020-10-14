@@ -24,7 +24,7 @@
 .color-picker-modal {
     z-index: 50;
     display: none;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;

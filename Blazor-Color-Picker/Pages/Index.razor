@@ -5,14 +5,14 @@
 <br />
 
 <button class="btn btn-primary" @onclick="OpenModal">
-    <div style="background-color:@color" class="buttonColor"></div> Select a Default Color
+    <div style="background-color:@color" class="buttonColor"></div> Select a default Color
 </button>
 
 <button class="btn btn-primary" @onclick="OpenModalCustom">
     <div style="background-color:@customColor" class="buttonColor"></div> Select a custom Color
 </button>
 
-<ColorPicker IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color" Title="Default Colors">
+<ColorPicker IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color" >
 </ColorPicker>
 
 <ColorPicker IsOpened="isOpenedCustom" Closed="ClosedCustomEvent" MyColor="@customColor" MyColorPallet="@colors" OverwriteBackgroundColor="#CCCCCC" Title="Custom Colors">
@@ -40,7 +40,6 @@
     void OpenModal()
     {
         isOpened = true;
-
     }
 
     void ClosedEvent(string value)
