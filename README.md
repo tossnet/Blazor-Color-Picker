@@ -24,6 +24,7 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 ```html
 <link href="_content/BlazorColorPicker/colorpicker.css" rel="stylesheet" />
+<script src="_content/BlazorColorPicker/colorpicker.js"></script>
 ```
 
 ## Usage
