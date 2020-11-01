@@ -6,12 +6,12 @@
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>the palette is not superimposed on the background elements</PackageReleaseNotes>
+    <PackageReleaseNotes>Can close palette by press Escape. Do add <script src="_content/BlazorColorPicker/colorpicker.js"></script></PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <PackageTags>blazor, color, picker, material, component</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

@@ -1,4 +1,6 @@
-﻿<div class="color-picker-modal  @cssClass" id="color-picker-modal">
+﻿@inject IJSRuntime JSRuntime;
+<div class="color-picker-modal  @cssClass"
+    tabindex="0" @onkeydown="@KeyDown" @ref="myPalette">
     <div class="color-picker-content">
         @if (!string.IsNullOrEmpty(Title))
         {
@@ -19,7 +21,6 @@
                     </div>
                 }
             </div>
-            @ModalBody
         </div>
 
     </div>
@@ -28,9 +29,6 @@
 @code {
     [Parameter]
     public string Title { get; set; }
-
-    [Parameter]
-    public RenderFragment ModalBody { get; set; }
 
     [Parameter]
     public string MyColor { get; set; }
@@ -51,6 +49,16 @@
     private string cssClass => IsOpened ? "show" : "hide";
 
     private List<string> colors = new List<string>();
+
+    protected ElementReference myPalette;  // set by the @ref attribute
+
+    
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        //TODO don't work if I check by firstRender
+        await JSRuntime.InvokeVoidAsync("SetFocusTo", myPalette); 
+    }  
+    
 
     protected override void OnParametersSet()
     {
@@ -275,6 +283,14 @@
         colors.Add("#36474F");
         colors.Add("#273238");
         #endregion
+    }
+
+    protected void KeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") {
+            StateHasChanged();
+            Closed.InvokeAsync(MyColor);
+        }
     }
 
     private void ColorClick(string color)
