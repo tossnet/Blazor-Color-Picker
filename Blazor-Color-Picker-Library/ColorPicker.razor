@@ -1,6 +1,6 @@
 ﻿@inject IJSRuntime JSRuntime;
 <div class="color-picker-modal  @cssClass"
-    tabindex="0" @onkeydown="@KeyDown" @ref="myPalette">
+     tabindex="0" @onkeydown="@KeyDown" @ref="myPalette">
     <div class="color-picker-content">
         @if (!string.IsNullOrEmpty(Title))
         {
@@ -56,7 +56,7 @@
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         //TODO don't work if I check by firstRender
-        await JSRuntime.InvokeVoidAsync("SetFocusTo", myPalette); 
+        await JSRuntime.InvokeVoidAsync("SetFocusTo2", myPalette); 
     }  
     
 
