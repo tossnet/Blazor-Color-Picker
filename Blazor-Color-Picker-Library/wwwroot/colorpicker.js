@@ -2,5 +2,4 @@
     if (element instanceof HTMLElement) {
         element.focus();
     }
-
 }
