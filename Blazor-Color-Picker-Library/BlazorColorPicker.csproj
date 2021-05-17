@@ -1,22 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.1.2</Version>
+    <Version>1.2.0</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>migrate to .net5.0</PackageReleaseNotes>
     <Copyright>Copyright 2020-2021</Copyright>
     <PackageTags>blazor, color, picker, material, component</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.6" />
   </ItemGroup>
 
 

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor-Color-Picker", "Blaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorColorPicker", "Blazor-Color-Picker-Library\BlazorColorPicker.csproj", "{81C79F9F-4A12-429C-A072-31DA09A86457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor-Color-Picker-50", "Blazor-Color-Picker-50\Blazor-Color-Picker-50.csproj", "{DF08C21B-FBF5-44D1-83F6-87DC91D25F0F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{81C79F9F-4A12-429C-A072-31DA09A86457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C79F9F-4A12-429C-A072-31DA09A86457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C79F9F-4A12-429C-A072-31DA09A86457}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF08C21B-FBF5-44D1-83F6-87DC91D25F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF08C21B-FBF5-44D1-83F6-87DC91D25F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF08C21B-FBF5-44D1-83F6-87DC91D25F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF08C21B-FBF5-44D1-83F6-87DC91D25F0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
