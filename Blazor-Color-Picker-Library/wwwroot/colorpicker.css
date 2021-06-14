@@ -53,6 +53,8 @@
 }
 
     .color-picker-case:hover {
+        width: 30px;
+        height: 30px;
         border: 1px solid #FFF;
         cursor: pointer;
     }
