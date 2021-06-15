@@ -5,17 +5,17 @@
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>migrate to .net5.0</PackageReleaseNotes>
+    <PackageReleaseNotes>CSS: place border inside the color box (</PackageReleaseNotes>
     <Copyright>Copyright 2020-2021</Copyright>
     <PackageTags>blazor, color, picker, material, component</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
+    <FileVersion>1.2.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
