@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.2.1</Version>
+    <Version>2.0.0</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>CSS: place border inside the color box (</PackageReleaseNotes>
+    <PackageReleaseNotes>CSS: migrate to NET6</PackageReleaseNotes>
     <Copyright>Copyright 2020-2021</Copyright>
     <PackageTags>blazor, color, picker, material, component</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.2.1.0</AssemblyVersion>
-    <FileVersion>1.2.1.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,8 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
   </ItemGroup>
 
 
