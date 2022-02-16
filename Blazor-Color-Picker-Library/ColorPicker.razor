@@ -46,7 +46,7 @@
     public EventCallback<string> Closed { get; set; }
 
     private string customStyle => !string.IsNullOrWhiteSpace(OverwriteBackgroundColor) ? $"background-color:{OverwriteBackgroundColor}" : "";
-    private string cssClass => IsOpened ? "show" : "hide";
+    private string cssClass => IsOpened ? "color-picker-show" : "color-picker-hide";
 
     private List<string> colors = new List<string>();
 

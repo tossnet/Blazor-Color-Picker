@@ -63,7 +63,7 @@
 }
 
 
-.show {
+.color-picker-show {
     display: block;
     animation-name: show-animation;
     animation-duration: 0.5s;
@@ -79,7 +79,7 @@
     }
 }
 
-.hide {
+.color-picker-hide {
     display: none;
 }
 
