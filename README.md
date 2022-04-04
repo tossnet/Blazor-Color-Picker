@@ -1,4 +1,4 @@
-# Blazor-Color-Picker
+﻿# Blazor-Color-Picker
 [![NuGet](https://img.shields.io/nuget/v/BlazorColorPicker.svg)](https://www.nuget.org/packages/BlazorColorPicker/) ![BlazorColorPicker Nuget Package](https://img.shields.io/nuget/dt/BlazorColorPicker)
 
 Sometimes HTML5 colorpicker doesn't suit me for an application. I prefer to offer the user a predefined color palette
@@ -24,7 +24,6 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 ```html
 <link href="_content/BlazorColorPicker/colorpicker.css" rel="stylesheet" />
-<script src="_content/BlazorColorPicker/colorpicker.js"></script>
 ```
 
 ## Usage
@@ -58,3 +57,14 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
     }
 }
 ```
+
+## <a name="ReleaseNotes"></a>Release Notes
+
+## ⚠️ Breaking changes ⚠️
+
+<details open="open"><summary>Version 2.1.0</summary>
+    
+>- no need to declare the _content/BlazorColorPicker/colorpicker.js file
+</details>
+
+

@@ -52,11 +52,19 @@
 
     protected ElementReference myPalette;  // set by the @ref attribute
 
-    
+    private JsInterop jsInterop { get; set; }
+    JsInterop GetJs()
+    {
+        if (jsInterop == null)
+            jsInterop = new JsInterop(JSRuntime);
+        return jsInterop;
+    }
+
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         //TODO don't work if I check by firstRender
-        await JSRuntime.InvokeVoidAsync("SetFocusTo2", myPalette); 
+        await GetJs().SetFocusTo(myPalette);
+        //await JSRuntime.InvokeVoidAsync("SetFocusTo2", myPalette); 
     }  
     
 
