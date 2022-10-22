@@ -1,0 +1,39 @@
+name: 'Publish application'
+on: push
+
+jobs:
+  build:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+   
+      - name: Dotnet Publish
+        run: 
+            dotnet publish Blazor-Color-Picker/BlazorExcelExport.csproj --configuration Release
+
+      - name: Change base-tag in index.html to Blazor-Color-Picker
+        run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/index.html
+  
+      - name: copy index.html to 404.html
+        run: cp /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/index.html /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/404.html
+      
+      - name: Add .nojekyll file
+        run: touch /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/.nojekyll
+        
+      - name: Deploy GitHub Pages action
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+            github_token: ${{ secrets.PUBLISH_TOKEN }}
+            publish_branch: gh-pages
+            ## publish_dir: ./public/wwwroot
+            publish_dir: /Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
+            allow_empty_commit: false
+            keep_files: false
+            force_orphan: true
