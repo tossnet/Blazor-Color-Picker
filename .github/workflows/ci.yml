@@ -41,7 +41,7 @@ jobs:
             github_token: ${{ secrets.PUBLISH_TOKEN }}
             publish_branch: gh-pages
             ## '/home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/$REPO_NAME/bin/Release/net6.0/publish/wwwroot'"
-            publish_dir: /${REPO_NAME}/bin/Release/net6.0/publish/wwwroot
+            publish_dir: /${{ REPO_NAME }}/bin/Release/net6.0/publish/wwwroot
             allow_empty_commit: false
             keep_files: false
             force_orphan: true
