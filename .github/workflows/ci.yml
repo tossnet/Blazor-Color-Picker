@@ -8,12 +8,10 @@ jobs:
     
     env:
      PUBLISH_FOLDER: Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
-     
-    
-       
+
     name: Build and Deploy Job
     steps:
-      - name: TEST 
+      - name: Set the name of the repo in env variable 
         run: echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
         
       - uses: actions/checkout@v2
@@ -26,7 +24,7 @@ jobs:
         run: 
             dotnet publish  --configuration Release
 
-      - name: Change base-tag in index.html to Blazor-Color-Picker
+      - name: Change base-tag in index.html to repo name
         run: sed -i 's/<base href="\/" \/>/<base href="\/$REPO_NAME\/" \/>/g' $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html
   
       - name: copy index.html to 404.html
@@ -41,9 +39,7 @@ jobs:
         with:
             github_token: ${{ secrets.PUBLISH_TOKEN }}
             publish_branch: gh-pages
-            ## publish_dir: ./public/wwwroot
-            ## /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/publish/wwwroot'"
-            publish_dir: /Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
+            publish_dir: /$REPO_NAME/bin/Release/net6.0/publish/wwwroot
             allow_empty_commit: false
             keep_files: false
             force_orphan: true
