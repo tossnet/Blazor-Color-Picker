@@ -1,6 +1,9 @@
 name: 'Publish application'
 on: push
 
+env:
+  PUBLISH_FOLDER: /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
+  
 jobs:
   build:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -18,7 +21,7 @@ jobs:
             dotnet publish Blazor-Color-Picker/Blazor-Color-Picker.csproj --configuration Release
 
       - name: Change base-tag in index.html to Blazor-Color-Picker
-        run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' $GITHUB_WORKSPACE/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/index.html
   
       - name: copy index.html to 404.html
         run: cp /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/index.html /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot/404.html
