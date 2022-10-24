@@ -24,7 +24,7 @@ jobs:
    
       - name: Dotnet Publish
         run: 
-            dotnet publish Blazor-Color-Picker/Blazor-Color-Picker.csproj --configuration Release
+            dotnet publish  --configuration Release
 
       - name: Change base-tag in index.html to Blazor-Color-Picker
         run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html
