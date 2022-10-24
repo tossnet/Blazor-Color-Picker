@@ -44,7 +44,7 @@ jobs:
             ## publish_dir: ./public/wwwroot
             ## publish_dir: /Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
             ## /home/runner/work/Blazor-Color-Picker/Blazor-Color-Picker/publish/wwwroot'"
-            publish_dir: ${{ ./ PUBLISH_FOLDER }}
+            publish_dir: /Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
             allow_empty_commit: false
             keep_files: false
             force_orphan: true
