@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-     PUBLISH_FOLDER: $GITHUB_WORKSPACE/Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
+     PUBLISH_FOLDER: Blazor-Color-Picker/bin/Release/net6.0/publish/wwwroot
   
     name: Build and Deploy Job
     steps:
@@ -22,10 +22,10 @@ jobs:
             dotnet publish Blazor-Color-Picker/Blazor-Color-Picker.csproj --configuration Release
 
       - name: Change base-tag in index.html to Blazor-Color-Picker
-        run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' $PUBLISH_FOLDER/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Color-Picker\/" \/>/g' $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html
   
       - name: copy index.html to 404.html
-        run: cp $PUBLISH_FOLDER/index.html $PUBLISH_FOLDER/404.html
+        run: cp $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html $GITHUB_WORKSPACE/$PUBLISH_FOLDER/404.html
       
       - name: Add .nojekyll file
         run: touch $PUBLISH_FOLDER/.nojekyll
