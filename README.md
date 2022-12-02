@@ -62,9 +62,14 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+<details open="open"><summary>Version 2.2.0</summary>
+    
+>- Remove the internal use of IJSRuntime
+</details>
+
 ## ⚠️ Breaking changes ⚠️
 
-<details open="open"><summary>Version 2.1.0</summary>
+<details><summary>Version 2.1.0</summary>
     
 >- no need to declare the _content/BlazorColorPicker/colorpicker.js file
 </details>
