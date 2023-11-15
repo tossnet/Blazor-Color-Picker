@@ -5,13 +5,13 @@
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>2.3.0</Version>
+    <Version>2.3.1</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>CSS: migrate to NET7</PackageReleaseNotes>
-    <Copyright>Copyright 2020-2022</Copyright>
+    <PackageReleaseNotes>Update nuget package</PackageReleaseNotes>
+    <Copyright>Copyright 2020-2023</Copyright>
     <PackageTags>blazor, color, picker, material, component</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.14" />
   </ItemGroup>
 
 

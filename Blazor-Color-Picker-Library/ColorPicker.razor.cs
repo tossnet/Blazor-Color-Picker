@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Components;
 namespace BlazorColorPicker;
 
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 public partial class ColorPicker
@@ -23,8 +23,8 @@ public partial class ColorPicker
     [Parameter]
     public EventCallback<string> Closed { get; set; }
 
-    private string customStyle => !string.IsNullOrWhiteSpace(OverwriteBackgroundColor) ? $"background-color:{OverwriteBackgroundColor}" : "";
-    private string cssClass => IsOpened ? "color-picker-show" : "color-picker-hide";
+    private string CustomStyle => !string.IsNullOrWhiteSpace(OverwriteBackgroundColor) ? $"background-color:{OverwriteBackgroundColor}" : "";
+    private string CssClass => IsOpened ? "color-picker-show" : "color-picker-hide";
     private List<string> colors = new();
     protected ElementReference myPalette; // set by the @ref attribute
 		
@@ -37,7 +37,7 @@ public partial class ColorPicker
     {
 			colors.Clear();
 			//My own color pallet
-			if (MyColorPallet != null && MyColorPallet.Count() > 0)
+			if (MyColorPallet is not null && MyColorPallet.Any())
 			{
 				colors.AddRange(MyColorPallet);
 				return;

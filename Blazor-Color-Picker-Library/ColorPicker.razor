@@ -1,5 +1,5 @@
 ﻿
-<div class="color-picker-modal  @cssClass"
+<div class="color-picker-modal  @CssClass"
      tabindex="0" @onkeydown="@KeyDown" @ref="myPalette">
     <div class="color-picker-content">
         @if (!string.IsNullOrEmpty(Title))
@@ -10,7 +10,7 @@
             </div>
         }
         <div class="color-picker-body">
-            <div class="color-picker-palette" style="@customStyle">
+            <div class="color-picker-palette" style="@CustomStyle">
                 @foreach (string item in colors)
                 {
                     <div class="color-picker-case text-center" style="background-color:@item" @onclick="() => ColorClick(item)">
