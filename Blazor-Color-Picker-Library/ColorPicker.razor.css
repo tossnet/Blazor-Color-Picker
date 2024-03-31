@@ -99,4 +99,9 @@
         width: var(--blazor-color-picker-height);
         height: var(--blazor-color-picker-width);
     }
+
+    .color-picker-case {
+        width: calc(100% / 10);
+        height: calc(100% / 19);
+    }
 }
