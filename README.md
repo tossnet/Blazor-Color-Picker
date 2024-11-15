@@ -62,7 +62,14 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 2.2.0</summary>
+<details open="open"><summary>Version 3.1.0</summary>
+    
+>- you can customise the size of the palette using your CSS styles
+>- A red colour of the first column was not correct
+>- Re-addition of .NET7 compatibility
+</details>
+
+<details><summary>Version 2.2.0</summary>
     
 >- Remove the internal use of IJSRuntime
 </details>

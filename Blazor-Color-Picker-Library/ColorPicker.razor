@@ -1,7 +1,10 @@
 ﻿
-<div class="color-picker-modal  @CssClass"
-     tabindex="0" @onkeydown="@KeyDown" @ref="myPalette">
-    <div class="color-picker-content">
+<div @ref="myPalette"
+     class="color-picker-modal @CssClass"
+     tabindex="0" 
+     @onkeydown="@KeyDown" >
+    <div class="color-picker-content" 
+         style="@Style">
         @if (!string.IsNullOrEmpty(Title))
         {
             <div class="color-picker-header">
@@ -10,13 +13,15 @@
             </div>
         }
         <div class="color-picker-body">
-            <div class="color-picker-palette" style="@CustomStyle">
+            <div class="color-picker-palette" style="@CustomStyle @Style">
                 @foreach (string item in colors)
                 {
-                    <div class="color-picker-case text-center" style="background-color:@item" @onclick="() => ColorClick(item)">
+                    <div class="color-picker-case text-center" 
+                         style="background-color:@item"
+                         @onclick="() => ColorClick(item)">
                         @if (MyColor == item)
                         {
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
                         }
                     </div>
                 }

@@ -12,40 +12,62 @@
     <div style="background-color:@customColor" class="buttonColor"></div> Select a custom Color
 </button>
 
-<ColorPicker IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color" >
-</ColorPicker>
 
-<ColorPicker IsOpened="isOpenedCustom" Closed="ClosedCustomEvent" MyColor="@customColor" MyColorPallet="@colors" OverwriteBackgroundColor="#CCCCCC" Title="Custom Colors">
-</ColorPicker>
+<button class="btn btn-primary" @onclick="OpenModalCustomSizes">
+    <div style="background-color:@customColorSize" class="buttonColor"></div> Custom sizes
+</button>
 
+<ColorPicker IsOpened="isOpened" 
+             Closed="ClosedEvent" 
+             MyColor="@color" />
+
+<ColorPicker IsOpened="isOpenedCustom" 
+             Closed="ClosedCustomEvent" 
+             MyColor="@customColor" 
+             MyColorPallet="@colors" 
+             OverwriteBackgroundColor="#CCCCCC" 
+             Title="Custom Colors" />
+
+
+<ColorPicker IsOpened="isOpenedCustomSizes"
+             Closed="ClosedEventCustomSize"
+             MyColor="@customColorSize"
+             Style="width:304px;height:304px" />
+              
 @code {
     string[] colors = new string[] { "#FFFFFF", "#000000", "#999999" };
     bool isOpened = false;
     bool isOpenedCustom = false;
+    bool isOpenedCustomSizes = false;
     string color = "#F1F7E9";
     string customColor = "#FFFFFF";
+    string customColorSize = "#42A5F6";
 
-    void OpenModalCustom()
-    {
-        isOpenedCustom = true;
-    }
 
-    void ClosedCustomEvent(string value)
-    {
-        customColor = value;
-        isOpened = false;
-        isOpenedCustom = false;
-    }
-
-    void OpenModal()
-    {
-        isOpened = true;
-    }
-
+    void OpenModal() => isOpened = true;
+    
     void ClosedEvent(string value)
     {
         color = value;
         isOpened = false;
+    }
+
+    void OpenModalCustom() => isOpenedCustom = true;
+
+    void ClosedCustomEvent(string value)
+    {
+        customColor = value;
         isOpenedCustom = false;
     }
+
+
+
+    void OpenModalCustomSizes() => isOpenedCustomSizes = true;
+
+    void ClosedEventCustomSize(string value)
+    {
+        customColorSize = value;
+        isOpenedCustomSizes = false;
+    }
+
 }
