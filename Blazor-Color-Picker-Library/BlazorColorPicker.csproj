@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net7.0;net8.0;net9.0</TargetFrameworks>
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>3.1.1</Version>
+    <Version>3.1.2</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>
@@ -30,16 +30,16 @@
 
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-  	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
+  	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.11" />
   </ItemGroup>
 	
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.17" />
   </ItemGroup>
 	
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0" />
-	</ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+  	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0" />
+  </ItemGroup>
 
 
   <ItemGroup>
