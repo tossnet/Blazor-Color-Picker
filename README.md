@@ -34,7 +34,7 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 
 In program.cs, declare 
 
-```c#
+```csharp
 builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
 ```
 
@@ -70,7 +70,12 @@ builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 4.0.0</summary>
+
+<details open="open"><summary>Version 4.0.1</summary>
+    
+>- increase the z-index to 9999
+</details>
+<details><summary>Version 4.0.0</summary>
     
 >- the implementation has been improved: version 4.0 uses a service declared via dependency injection
 </details>
