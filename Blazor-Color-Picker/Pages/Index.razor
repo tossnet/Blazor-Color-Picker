@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using BlazorColorPicker
 
+@inject IColorPickerService ColorPickerService
+
 <a href="https://www.nuget.org/packages/BlazorColorPicker/"><img src="https://img.shields.io/nuget/v/BlazorColorPicker.svg" /></a>
 <br />
 
@@ -17,57 +19,43 @@
     <div style="background-color:@customColorSize" class="buttonColor"></div> Custom sizes
 </button>
 
-<ColorPicker IsOpened="isOpened" 
-             Closed="ClosedEvent" 
-             MyColor="@color" />
-
-<ColorPicker IsOpened="isOpenedCustom" 
-             Closed="ClosedCustomEvent" 
-             MyColor="@customColor" 
-             MyColorPallet="@colors" 
-             OverwriteBackgroundColor="#CCCCCC" 
-             Title="Custom Colors" />
-
-
-<ColorPicker IsOpened="isOpenedCustomSizes"
-             Closed="ClosedEventCustomSize"
-             MyColor="@customColorSize"
-             Style="width:304px;height:304px" />
               
 @code {
-    string[] colors = new string[] { "#FFFFFF", "#000000", "#999999" };
-    bool isOpened = false;
-    bool isOpenedCustom = false;
-    bool isOpenedCustomSizes = false;
-    string color = "#F1F7E9";
-    string customColor = "#FFFFFF";
-    string customColorSize = "#42A5F6";
+	private string color = "#F1F7E9";
+	private string customColor = "#FFFFFF";
+	private string customColorSize = "#42A5F6";
 
+	private async Task OpenModal()
+	{
+		var parameters = new ColorPickerParameters
+		{
+			ColorSelected = color,
+		};
+		color = await ColorPickerService.ShowColorPicker(parameters);
+	}
 
-    void OpenModal() => isOpened = true;
-    
-    void ClosedEvent(string value)
-    {
-        color = value;
-        isOpened = false;
+	private async Task OpenModalCustom()
+	{
+		string[] colors = new string[] { "#FFFFFF", "#000000", "#999999", "#03A97E", "#04B573",
+			"#05BF69", "#06CA5F", "#06D554", "#07E148", "#08EC3E" };
+
+		var parameters = new ColorPickerParameters
+		{
+			ColorSelected = customColor,
+			MyColorPallet = colors,
+			OverwriteBackgroundColor = "#CCCCCC",
+			Title = "Custom Colors",
+		};
+		customColor = await ColorPickerService.ShowColorPicker(parameters);
     }
 
-    void OpenModalCustom() => isOpenedCustom = true;
-
-    void ClosedCustomEvent(string value)
-    {
-        customColor = value;
-        isOpenedCustom = false;
-    }
-
-
-
-    void OpenModalCustomSizes() => isOpenedCustomSizes = true;
-
-    void ClosedEventCustomSize(string value)
-    {
-        customColorSize = value;
-        isOpenedCustomSizes = false;
-    }
-
+	private async Task OpenModalCustomSizes()
+	{
+		var parameters = new ColorPickerParameters
+		{
+			ColorSelected = customColorSize,
+			Style = "width: 304px; height: 304px",
+		};
+		customColorSize = await ColorPickerService.ShowColorPicker(parameters);
+	} 
 }

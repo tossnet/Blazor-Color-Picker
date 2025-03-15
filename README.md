@@ -11,6 +11,10 @@ Opens a palette with the Material colors
 
 
 # Installation
+
+> [!WARNING]
+> The implementation has been improved: version 4.0 uses a service declared via dependency injection
+
 Latest version in here: [![NuGet](https://img.shields.io/nuget/v/BlazorColorPicker.svg)](https://www.nuget.org/packages/BlazorColorPicker/)
 
 To Install
@@ -28,11 +32,21 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 <link href="_content/BlazorColorPicker/colorpicker.css" rel="stylesheet" />
 ```
 
+In program.cs, declare 
+
+```c#
+builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
+```
+
+**ColorPicker** are rendered by the `<BlazorColorPicker.ColorPicker />`. This component needs to be added to the main layout of your application/site. You typically do this in the `MainLayout.razor` file at the end of the <main> section.
+
 ## Usage
 
 ```html
 @page "/"
 @using BlazorColorPicker
+
+@inject IColorPickerService ColorPickerService
 
 <h1>Hello, world!</h1>
 
@@ -40,29 +54,29 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
     <div style="background-color:@color" class="buttonColor"></div> Select a Color
 </button>
 
-<ColorPicker Title="My Blazor ColorPicker" IsOpened="isOpened" Closed="ClosedEvent" MyColor="@color">
-</ColorPicker>
-
 @code {
-    bool isOpened = false;
-    string color = "#F1F7E9";
+    private string color = "#F1F7E9";
 
-    void OpenModal()
+    private async Task OpenModal()
     {
-        isOpened = true;
-    }
-
-    void ClosedEvent(string value)
-    {
-        color = value;
-        isOpened = false;
+        var parameters = new ColorPickerParameters
+        {
+        	ColorSelected = color,
+        };
+        color = await ColorPickerService.ShowColorPicker(parameters);
     }
 }
 ```
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 3.1.0</summary>
+<details open="open"><summary>Version 4.0.0</summary>
+    
+>- the implementation has been improved: version 4.0 uses a service declared via dependency injection
+</details>
+
+## ⚠️ Breaking changes ⚠️
+<details><summary>Version 3.1.0</summary>
     
 >- you can customise the size of the palette using your CSS styles
 >- A red colour of the first column was not correct
@@ -73,8 +87,6 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
     
 >- Remove the internal use of IJSRuntime
 </details>
-
-## ⚠️ Breaking changes ⚠️
 
 <details><summary>Version 2.1.0</summary>
     

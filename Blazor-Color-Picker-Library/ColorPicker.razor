@@ -1,33 +1,34 @@
-﻿
-<div @ref="myPalette"
-     class="color-picker-modal @CssClass"
-     tabindex="0" 
-     @onkeydown="@KeyDown" >
-    <div class="color-picker-content" 
-         style="@Style">
-        @if (!string.IsNullOrEmpty(Title))
-        {
-            <div class="color-picker-header">
-                <h5 class="color-picker-title">@Title</h5>
-                <span class="color-picker-close-button" @onclick="Close">X</span>
-            </div>
-        }
-        <div class="color-picker-body">
-            <div class="color-picker-palette" style="@CustomStyle @Style">
-                @foreach (string item in colors)
-                {
-                    <div class="color-picker-case text-center" 
-                         style="background-color:@item"
-                         @onclick="() => ColorClick(item)">
-                        @if (MyColor == item)
-                        {
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
+﻿@if (IsVisible)
+{
+	<div @ref="Element"
+	     class="color-picker-modal @CssClass"
+	     tabindex="0" 
+	     @onkeydown="@KeyDown" >
+	    <div class="color-picker-content" 
+	         style="@Parameters.Style">
+	        @if (!string.IsNullOrEmpty(Parameters.Title))
+	        {
+		        <div class="color-picker-header">
+		            <h5 class="color-picker-title">@Parameters.Title</h5>
+				    <span class="color-picker-close-button" @onclick="HandleCancel">X</span>
+		        </div>
+	        }
+	        <div class="color-picker-body">
+	            <div class="color-picker-palette" style="@CustomStyle @Parameters.Style">
+	                @foreach (string item in colors)
+	                {
+		                <div class="color-picker-case text-center" 
+		                     style="background-color:@item"
+		                     @onclick="() => ColorClick(item)">
+		                    @if (Parameters.ColorSelected == item)
+		                    {
+			                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
+		                    }
+		                </div>
+	                }
+	            </div>
+	        </div>
 
-    </div>
-</div>
-
+	    </div>
+	</div>
+}
