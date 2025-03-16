@@ -35,7 +35,7 @@ For client-side and server-side Blazor - add script section to index.html or _Ho
 In program.cs, declare 
 
 ```csharp
-builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
+builder.Services.AddColorPicker();
 ```
 
 **ColorPicker** are rendered by the `<BlazorColorPicker.ColorPicker />`. This component needs to be added to the main layout of your application/site. You typically do this in the `MainLayout.razor` file at the end of the <main> section.
@@ -47,8 +47,6 @@ builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
 @using BlazorColorPicker
 
 @inject IColorPickerService ColorPickerService
-
-<h1>Hello, world!</h1>
 
 <button class="btn btn-primary" @onclick="OpenModal">
     <div style="background-color:@color" class="buttonColor"></div> Select a Color
@@ -70,19 +68,21 @@ builder.Services.AddScoped<IColorPickerService, ColorPickerService>();
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
+<details open="open"><summary>Version 4.0.2</summary>
+>- Added AddColorPicker() to simplify declaration
+</details>
 
-<details open="open"><summary>Version 4.0.1</summary>
-    
+<details><summary>Version 4.0.1</summary>
 >- increase the z-index to 9999
 </details>
+
 <details><summary>Version 4.0.0</summary>
-    
 >- the implementation has been improved: version 4.0 uses a service declared via dependency injection
 </details>
 
 ## ⚠️ Breaking changes ⚠️
+
 <details><summary>Version 3.1.0</summary>
-    
 >- you can customise the size of the palette using your CSS styles
 >- A red colour of the first column was not correct
 >- Re-addition of .NET7 compatibility

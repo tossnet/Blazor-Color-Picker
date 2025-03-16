@@ -5,7 +5,7 @@
     <RootNamespace>BlazorColorPicker</RootNamespace>
     <Authors>Christophe Peugnet</Authors>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>4.0.1</Version>
+    <Version>4.0.2</Version>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
     <PackageProjectUrl>https://github.com/tossnet/Blazor-Color-Picker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tossnet/Blazor-Color-Picker</RepositoryUrl>

@@ -5,6 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+	  <AssemblyName>BlazorColorPicker.Tests</AssemblyName>
+	  <RootNamespace>BlazorColorPicker.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
