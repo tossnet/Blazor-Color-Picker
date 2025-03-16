@@ -1,0 +1,40 @@
+@using Xunit
+@using Bunit
+@using BlazorColorPicker
+@using Microsoft.Extensions.DependencyInjection
+
+@inherits TestContext
+
+
+@code
+{
+    // A timeout can be set when you open a colorpicker and do not close it.
+    private const int TEST_TIMEOUT = 3000;
+
+    public ColorPickerTests()
+    {
+        Services.AddColorPicker();
+
+        ColorPickerService = Services.GetRequiredService<IColorPickerService>();
+    }
+
+    /// </ summary>
+    public IColorPickerService ColorPickerService { get; }
+
+    [Fact(Timeout = TEST_TIMEOUT)]
+    public async Task ColorPicker_Open()
+    {
+        // Act
+        var parameters = new ColorPickerParameters
+        {
+            ColorSelected = "#F1F7E9",
+        };
+        var dialogTask = ColorPickerService.ShowColorPicker(parameters);
+
+        // Don't wait for the dialog to be closed
+        await Task.CompletedTask;
+
+        // Assert
+        Assert.NotNull(dialogTask);
+    }
+}
