@@ -1,5 +1,6 @@
 ﻿# Blazor-Color-Picker
 [![NuGet](https://img.shields.io/nuget/v/BlazorColorPicker.svg)](https://www.nuget.org/packages/BlazorColorPicker/) ![BlazorColorPicker Nuget Package](https://img.shields.io/nuget/dt/BlazorColorPicker)
+[![GitHub](https://img.shields.io/github/license/tossnet/Blazor-Color-Picker?color=594ae2&logo=github&style=flat-square)](https://github.com/tossnet/Blazor-Color-Picker/blob/master/LICENSE)
 
 Sometimes HTML5 colorpicker doesn't suit me for an application. I prefer to offer the user a predefined color palette
 
