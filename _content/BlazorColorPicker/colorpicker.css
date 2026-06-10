@@ -1,0 +1,12 @@
+﻿:root {
+    --blazor-color-picker-width: 608px;
+    --blazor-color-picker-height: 320px;
+}
+
+.buttonColor {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
