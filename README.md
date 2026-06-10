@@ -67,6 +67,27 @@ builder.Services.AddColorPicker();
 }
 ```
 
+## Z-Index
+
+By default the color picker modal uses `z-index: 9999`. If your app has a parent element with a higher z-index, the palette may appear behind it. Two override options are available:
+
+**Option 1 — CSS custom property** (global, no code change needed):
+```css
+:root {
+    --color-picker-z-index: 999999;
+}
+```
+
+**Option 2 — `ZIndex` parameter** (per call):
+```csharp
+var parameters = new ColorPickerParameters
+{
+    ColorSelected = color,
+    ZIndex = 999999,
+};
+color = await ColorPickerService.ShowColorPicker(parameters);
+```
+
 ## Find Closest Color
 
 When the selected color doesn't exist in the palette, you can enable automatic matching to the closest available color using the `FindClosestIfNotFound` parameter:
@@ -87,7 +108,12 @@ The algorithm uses a **weighted Euclidean distance** in RGB color space, which a
 
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 4.2.0</summary>
+<details open="open"><summary>Version 4.4.0</summary>
+
+>- Configurable z-index via `ZIndex` parameter or CSS custom property `--color-picker-z-index` (default: 9999)
+</details>
+
+<details><summary>Version 4.2.0</summary>
 
 >- New feature: `FindClosestIfNotFound` parameter - when the selected color is not in the palette, automatically highlights the closest matching color
 >- Color comparison is now case-insensitive (`#ec407a` matches `#EC407A`)

@@ -2,7 +2,8 @@
 {
 	<div @ref="Element"
 		 class="color-picker-modal @CssClass"
-		 tabindex="0" 
+		 style="@ModalStyle"
+		 tabindex="0"
 		 @onkeydown="@KeyDown" >
 		<div class="color-picker-content">
 			@if (!string.IsNullOrEmpty(Parameters.Title))

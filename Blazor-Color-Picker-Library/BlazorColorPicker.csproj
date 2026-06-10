@@ -8,7 +8,7 @@
 
     <!-- Package metadata -->
     <PackageId>BlazorColorPicker</PackageId>
-    <Version>4.3.0</Version>
+    <Version>4.4.0</Version>
     <Authors>Christophe Peugnet</Authors>
     <Copyright>Copyright 2020-2026</Copyright>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
@@ -19,7 +19,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReleaseNotes>Add .NET 10 support, remove .NET 7</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      Configurable z-index via `ZIndex` parameter or CSS custom property `--color-picker-z-index` (default: 9999)
+    </PackageReleaseNotes>
 
     <!-- Build and symbols -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -39,15 +41,15 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.28" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.17" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.9" />
   </ItemGroup>
 
   <ItemGroup>

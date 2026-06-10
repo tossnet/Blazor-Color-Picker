@@ -162,6 +162,10 @@ public partial class ColorPicker
 
     private string CssClass => IsVisible ? "color-picker-show" : "color-picker-hide";
 
+    private string ModalStyle => Parameters.ZIndex.HasValue
+        ? $"--color-picker-z-index: {Parameters.ZIndex.Value};"
+        : string.Empty;
+
     private IReadOnlyList<string> colors = DefaultColors;
 
     private string? HighlightedColor { get; set; }

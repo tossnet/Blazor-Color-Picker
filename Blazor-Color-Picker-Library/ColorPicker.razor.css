@@ -1,5 +1,5 @@
 ﻿.color-picker-modal {
-    z-index: 9999;
+    z-index: var(--color-picker-z-index, 9999);
     display: none;
     position: fixed;
     left: 0;
