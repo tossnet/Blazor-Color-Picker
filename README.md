@@ -10,6 +10,7 @@ Opens a palette with the Material colors
 
 ![Blazor Color Picker](https://github.com/tossnet/Blazor-Color-Picker/blob/master/BlazorColorPicker.gif)
 
+<img width="864" height="672" alt="Enregistrement 2026-11-16 111506" src="https://github.com/user-attachments/assets/866d2f96-c6fa-4650-bad1-7dcbf722eb39" />
 
 # Installation
 
