@@ -1,0 +1,239 @@
+/* _content/BlazorColorPicker/ColorPicker.razor.rz.scp.css */
+.color-picker-modal[b-gb64p4c8i6] {
+    z-index: var(--color-picker-z-index, 9999);
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3)
+}
+
+.color-picker-modal:target[b-gb64p4c8i6] {
+    display: block;
+}
+
+.color-picker-content[b-gb64p4c8i6] {
+    background-color: black;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 12px #9d9d9d;
+    -moz-box-shadow: 0 0 12px #9d9d9d;
+    box-shadow: 0 0 12px #9d9d9d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.color-picker-case[b-gb64p4c8i6] {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+    .color-picker-case:hover[b-gb64p4c8i6] {
+        border: 1px solid #FFF;
+        cursor: pointer;
+    }
+
+.color-picker-palette[b-gb64p4c8i6] {
+    display: grid;
+    grid-template-rows: repeat(var(--color-picker-rows, 10), 1fr);
+    grid-template-columns: repeat(var(--color-picker-columns, 19), 1fr);
+    grid-auto-flow: column;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.color-picker-show[b-gb64p4c8i6] {
+    display: block;
+    animation-name: show-animation-b-gb64p4c8i6;
+    animation-duration: 0.5s;
+}
+
+@keyframes show-animation-b-gb64p4c8i6 {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.color-picker-hide[b-gb64p4c8i6] {
+    display: none;
+}
+
+.color-picker-body[b-gb64p4c8i6] {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Width and height are set inline via PaletteStyle or Parameters.Style */
+}
+
+.color-picker-header[b-gb64p4c8i6] {
+    background-color: #d9d9d9;
+    padding: 3px;
+    color: white;
+}
+
+.color-picker-title[b-gb64p4c8i6] {
+    margin: 5px;
+    display: inline-block;
+    font-size: 1.15rem;
+}
+
+.color-picker-close-button[b-gb64p4c8i6] {
+    float: right;
+    margin: 5px;
+    cursor: pointer;
+}
+
+    .color-picker-close-button:hover[b-gb64p4c8i6] {
+        color: red;
+    }
+
+/* ---- Intensity / Hue sliders ---- */
+
+.color-picker-adjust[b-gb64p4c8i6] {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    background-color: #FFF;
+}
+
+.color-picker-adjust-with-intensity[b-gb64p4c8i6] {
+    grid-template-columns: auto 24px;
+}
+
+.color-picker-slider-wrap[b-gb64p4c8i6] {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+}
+
+.color-picker-slider-wrap-vertical[b-gb64p4c8i6] {
+    width: 24px;
+}
+
+.color-picker-slider-wrap-horizontal[b-gb64p4c8i6] {
+    grid-column: 1;
+    height: 24px;
+}
+
+.color-picker-slider[b-gb64p4c8i6] {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    --color-picker-tick: rgba(0, 0, 0, 0.35);
+}
+
+.color-picker-slider-vertical[b-gb64p4c8i6] {
+    writing-mode: vertical-lr;
+    direction: rtl; /* max at the top */
+}
+
+.color-picker-slider:focus[b-gb64p4c8i6] {
+    outline: none;
+}
+
+/* Track: gradient of the selected color + middle tick */
+.color-picker-slider[b-gb64p4c8i6]::-webkit-slider-runnable-track {
+    box-sizing: border-box;
+    block-size: 14px;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.color-picker-slider[b-gb64p4c8i6]::-moz-range-track {
+    box-sizing: border-box;
+    block-size: 14px;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.color-picker-slider-horizontal[b-gb64p4c8i6]::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, transparent calc(50% - 1px), var(--color-picker-tick) calc(50% - 1px), var(--color-picker-tick) calc(50% + 1px), transparent calc(50% + 1px)), var(--color-picker-track);
+}
+
+.color-picker-slider-horizontal[b-gb64p4c8i6]::-moz-range-track {
+    background: linear-gradient(to right, transparent calc(50% - 1px), var(--color-picker-tick) calc(50% - 1px), var(--color-picker-tick) calc(50% + 1px), transparent calc(50% + 1px)), var(--color-picker-track);
+}
+
+.color-picker-slider-vertical[b-gb64p4c8i6]::-webkit-slider-runnable-track {
+    background: linear-gradient(to bottom, transparent calc(50% - 1px), var(--color-picker-tick) calc(50% - 1px), var(--color-picker-tick) calc(50% + 1px), transparent calc(50% + 1px)), var(--color-picker-track);
+}
+
+.color-picker-slider-vertical[b-gb64p4c8i6]::-moz-range-track {
+    background: linear-gradient(to bottom, transparent calc(50% - 1px), var(--color-picker-tick) calc(50% - 1px), var(--color-picker-tick) calc(50% + 1px), transparent calc(50% + 1px)), var(--color-picker-track);
+}
+
+/* Thumb: 24px, round, white, dark 2px border */
+.color-picker-slider[b-gb64p4c8i6]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    margin-block-start: -6px; /* (12px track content - 24px thumb) / 2 */
+    border-radius: 50%;
+    background: #FFF;
+    border: 2px solid #333;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.color-picker-slider[b-gb64p4c8i6]::-moz-range-thumb {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 2px solid #333;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.color-picker-slider:focus-visible[b-gb64p4c8i6]::-webkit-slider-thumb {
+    border-color: #1976D3;
+}
+
+.color-picker-slider:focus-visible[b-gb64p4c8i6]::-moz-range-thumb {
+    border-color: #1976D3;
+}
+
+@media (max-width: 767px) {
+    .color-picker-palette[b-gb64p4c8i6] {
+        /* Inverse rows and columns for portrait mode */
+        grid-template-rows: repeat(var(--color-picker-columns, 19), 1fr);
+        grid-template-columns: repeat(var(--color-picker-rows, 10), 1fr);
+        grid-auto-flow: row;
+        direction: rtl; /* Inverse left-right order */
+    }
+
+    .color-picker-case[b-gb64p4c8i6] {
+        direction: ltr; /* Restore direction for cell content */
+    }
+
+    .color-picker-body[b-gb64p4c8i6] {
+        /* Swap dimensions for portrait mode - uses computed or custom dimensions */
+        width: var(--color-picker-mobile-width, 320px) !important;
+        height: var(--color-picker-mobile-height, 608px) !important;
+    }
+}
