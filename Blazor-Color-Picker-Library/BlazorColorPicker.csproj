@@ -8,7 +8,7 @@
 
     <!-- Package metadata -->
     <PackageId>BlazorColorPicker</PackageId>
-    <Version>4.5.0</Version>
+    <Version>4.5.1</Version>
     <Authors>Christophe Peugnet</Authors>
     <Copyright>Copyright 2020-2026</Copyright>
     <Description>Opens a modal palette with the Material colors for Blazor Application</Description>
@@ -20,6 +20,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>
+      4.5.1: republish of 4.5.0, whose package mistakenly contained the 4.4 binaries.
       Optional Intensity and Hue sliders (ShowIntensitySlider, ShowHueSlider) on the Material palette, PaletteChoice state (ShowPaletteChoice, FromHex, JSON) to restore the palette exactly. IColorPickerService gains ShowPaletteChoice.
     </PackageReleaseNotes>
 
