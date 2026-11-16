@@ -87,29 +87,7 @@ private async Task OpenModal()
 	<div class="mt-1"><small>Stored color: <code>@adjustColor</code> &mdash; Stored state: <code>@(rememberState ? adjustState ?? "(none)" : "(not remembered)")</code></small></div>
 </div>
 
-<CodeBlock Language="CodeLanguage.CSharp"
-		   Code=@(@"
-private string color = ""#2196F3"";
-private string? state; // JSON stored with the setting
-
-private async Task OpenModalAdjust()
-{
-	var parameters = new ColorPickerParameters
-	{
-		ColorSelected = color,
-		ShowIntensitySlider = true,
-		ShowHueSlider = true,
-		PaletteChoice = PaletteChoice.Resolve(state, color),
-	};
-
-	var choice = await ColorPickerService.ShowPaletteChoice(parameters);
-	if (choice is not null)
-	{
-		color = choice.Hex;
-		state = choice.ToJson();
-	}
-}
-		   	 	 ") />
+<CodeBlock @key="AdjustCode" Language="CodeLanguage.CSharp" Code="@AdjustCode" />
 
 @code {
 	private string adjustColor = "#2196F3";
@@ -117,6 +95,51 @@ private async Task OpenModalAdjust()
 	private bool showIntensitySlider = true;
 	private bool showHueSlider = true;
 	private bool rememberState = true;
+
+	private static string Bool(bool value) => value ? "true" : "false";
+
+	private string AdjustCode => rememberState ? AdjustCodeWithState : AdjustCodeHexOnly;
+
+	private string AdjustCodeWithState => $@"
+private string color = ""#2196F3"";
+private string? state; // JSON stored with the setting
+
+private async Task OpenModalAdjust()
+{{
+	var parameters = new ColorPickerParameters
+	{{
+		ColorSelected = color,
+		ShowIntensitySlider = {Bool(showIntensitySlider)},
+		ShowHueSlider = {Bool(showHueSlider)},
+		// The stored state if present, otherwise deduced from the hex
+		PaletteChoice = PaletteChoice.Resolve(state, color),
+	}};
+
+	var choice = await ColorPickerService.ShowPaletteChoice(parameters);
+	if (choice is not null)
+	{{
+		color = choice.Hex;
+		state = choice.ToJson();
+	}}
+}}
+";
+
+	private string AdjustCodeHexOnly => $@"
+private string color = ""#2196F3""; // only the hex is stored
+
+private async Task OpenModalAdjust()
+{{
+	var parameters = new ColorPickerParameters
+	{{
+		ColorSelected = color,
+		ShowIntensitySlider = {Bool(showIntensitySlider)},
+		ShowHueSlider = {Bool(showHueSlider)},
+		// No PaletteChoice: the palette deduces the cell and sliders from the hex
+	}};
+
+	color = await ColorPickerService.ShowColorPicker(parameters);
+}}
+";
 
 	private void OnRememberStateChanged()
 	{
