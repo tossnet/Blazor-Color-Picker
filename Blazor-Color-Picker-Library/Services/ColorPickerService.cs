@@ -1,5 +1,7 @@
 ﻿namespace BlazorColorPicker;
 
+internal sealed record PickerResult(string Hex, PaletteChoice? Choice);
+
 public class ColorPickerService : IColorPickerService
 {
     private readonly IServiceProvider _serviceProvider;
@@ -12,13 +14,13 @@ public class ColorPickerService : IColorPickerService
     /// <summary>
     /// Event triggered to show the color picker.
     /// </summary>
-    private event Func<ColorPickerParameters, Task<string>>? OnShowColorPicker;
+    private event Func<ColorPickerParameters, Task<PickerResult>>? OnShowColorPicker;
 
     /// <summary>
     /// Registers a handler for the color picker event.
     /// </summary>
     /// <param name="handler">The handler to register.</param>
-    internal void Register(Func<ColorPickerParameters, Task<string>> handler)
+    internal void Register(Func<ColorPickerParameters, Task<PickerResult>> handler)
     {
         OnShowColorPicker += handler;
     }
@@ -32,9 +34,22 @@ public class ColorPickerService : IColorPickerService
     {
         if (OnShowColorPicker is not null)
         {
-            return await OnShowColorPicker.Invoke(parameters);
+            var result = await OnShowColorPicker.Invoke(parameters);
+            return result.Hex;
         }
 
         return null;
+    }
+
+    /// <inheritdoc />
+    public async Task<PaletteChoice?> ShowPaletteChoice(ColorPickerParameters parameters)
+    {
+        if (OnShowColorPicker is not null)
+        {
+            var result = await OnShowColorPicker.Invoke(parameters);
+            return result.Choice;
+        }
+
+        return parameters.PaletteChoice;
     }
 }

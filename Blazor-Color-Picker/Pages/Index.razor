@@ -58,7 +58,91 @@ private async Task OpenModal()
 	</button>
 </div>
 
+<div class="mt-4">
+	<h5>Adjust intensity &amp; hue</h5>
+	<p class="mb-2">
+		<small>
+			With <b>Remember the state</b>, the cell and slider positions are stored as JSON, so the palette reopens exactly as it was left.
+			Without it, only the hex color is stored: when the palette reopens, it looks for a cell and slider positions that give this color back (<code>PaletteChoice.FromHex</code>).
+			The color is the same, but the check mark and sliders may be in a different place, and for a few rare colors nothing is found (no check mark, sliders at neutral).
+		</small>
+	</p>
+	<div class="mb-2">
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="showIntensity" @bind="showIntensitySlider" />
+			<label class="form-check-label" for="showIntensity">Intensity slider</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="showHue" @bind="showHueSlider" />
+			<label class="form-check-label" for="showHue">Hue slider</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="rememberState" @bind="rememberState" @bind:after="OnRememberStateChanged" />
+			<label class="form-check-label" for="rememberState">Remember the state (otherwise the hex only)</label>
+		</div>
+	</div>
+	<button class="btn btn-primary" @onclick="OpenModalAdjust">
+		<div style="background-color:@adjustColor" class="buttonColor"></div> Select an adjusted Color
+	</button>
+	<div class="mt-1"><small>Stored color: <code>@adjustColor</code> &mdash; Stored state: <code>@(rememberState ? adjustState ?? "(none)" : "(not remembered)")</code></small></div>
+</div>
+
+<CodeBlock Language="CodeLanguage.CSharp"
+		   Code=@(@"
+private string color = ""#2196F3"";
+private string? state; // JSON stored with the setting
+
+private async Task OpenModalAdjust()
+{
+	var parameters = new ColorPickerParameters
+	{
+		ColorSelected = color,
+		ShowIntensitySlider = true,
+		ShowHueSlider = true,
+		PaletteChoice = PaletteChoice.Resolve(state, color),
+	};
+
+	var choice = await ColorPickerService.ShowPaletteChoice(parameters);
+	if (choice is not null)
+	{
+		color = choice.Hex;
+		state = choice.ToJson();
+	}
+}
+		   	 	 ") />
+
 @code {
+	private string adjustColor = "#2196F3";
+	private string? adjustState;
+	private bool showIntensitySlider = true;
+	private bool showHueSlider = true;
+	private bool rememberState = true;
+
+	private void OnRememberStateChanged()
+	{
+		// Without memorization, only the hex is kept: the palette deduces the sliders with FromHex
+		if (!rememberState)
+			adjustState = null;
+	}
+
+	private async Task OpenModalAdjust()
+	{
+		var parameters = new ColorPickerParameters
+		{
+			ColorSelected = adjustColor,
+			ShowIntensitySlider = showIntensitySlider,
+			ShowHueSlider = showHueSlider,
+			PaletteChoice = rememberState ? PaletteChoice.Resolve(adjustState, adjustColor) : null,
+		};
+
+		var choice = await ColorPickerService.ShowPaletteChoice(parameters);
+		if (choice is not null)
+		{
+			adjustColor = choice.Hex;
+			adjustState = rememberState ? choice.ToJson() : null;
+		}
+	}
+
 	private string color = "#ec407a";
 	private string customColor = "#FFFFFF";
 	private string customColorSize = "#42A5F6";

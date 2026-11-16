@@ -18,4 +18,25 @@ public record ColorPickerParameters
     /// Can also be set globally via the CSS custom property --color-picker-z-index.
     /// </summary>
     public int? ZIndex { get; init; } = null;
+
+    /// <summary>
+    /// Shows the vertical "Intensity" slider on the right of the Material palette (default palette only).
+    /// </summary>
+    public bool ShowIntensitySlider { get; init; } = false;
+
+    /// <summary>
+    /// Shows the horizontal "Hue" slider under the Material palette (default palette only).
+    /// </summary>
+    public bool ShowHueSlider { get; init; } = false;
+
+    /// <summary>
+    /// Palette state to restore (selected cell and slider positions). When null, the state is
+    /// deduced from <see cref="ColorSelected"/> with <see cref="BlazorColorPicker.PaletteChoice.FromHex"/>.
+    /// </summary>
+    public PaletteChoice? PaletteChoice { get; init; }
+
+    /// <summary>
+    /// Called each time the palette state changes (slider moved while a cell is selected, or cell clicked).
+    /// </summary>
+    public Action<PaletteChoice>? OnPaletteChoiceChanged { get; init; }
 }

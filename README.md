@@ -106,9 +106,61 @@ The algorithm uses a **weighted Euclidean distance** in RGB color space, which a
 > [!NOTE]
 > Color comparison is case-insensitive: `#ec407a` will match `#EC407A` in the palette.
 
+## Intensity & Hue sliders
+
+Two optional sliders adjust the whole Material palette live (HSL, computed in C#, no JS interop). Both are **off by default** and can be enabled independently:
+
+- `ShowIntensitySlider` (vertical, 0..200, neutral 100): up = more vivid and slightly darker, down = greyer and lighter.
+- `ShowHueSlider` (horizontal, -180..+180, neutral 0): rotates the hue; pure greys don't move.
+
+Near the neutral position (±4 intensity, ±7 hue), the mouse snaps back to neutral. The keyboard doesn't snap. Adjust the sliders first, then click a cell: the cell's adjusted color is returned.
+
+Sliders only apply to the default palette. They are ignored when `MyColorPallet` is set.
+
+### Restoring the palette exactly
+
+An adjusted color can't be mapped back to slider positions from its hex alone, so store the palette state with your setting. Use `ShowPaletteChoice`, which returns a `PaletteChoice(BaseHex, Intensity, Hue, Hex)`. The cell is identified by its original Material color (`BaseHex`), so the stored JSON stays readable:
+
+```json
+{"BaseHex":"#673BB7","Intensity":99,"Hue":61,"Hex":"#634EE1"}
+```
+
+
+
+```csharp
+private string color = "#2196F3";
+private string? state; // JSON stored with the setting
+
+var parameters = new ColorPickerParameters
+{
+    ColorSelected = color,
+    ShowIntensitySlider = true,
+    ShowHueSlider = true,
+    PaletteChoice = PaletteChoice.Resolve(state, color), // state if present, else FromHex(color)
+};
+
+var choice = await ColorPickerService.ShowPaletteChoice(parameters);
+if (choice is not null)
+{
+    color = choice.Hex;
+    state = choice.ToJson();
+}
+```
+
+- `PaletteChoice.Create("#2196F3")` creates a state from a palette color (sliders at neutral, or pass `intensity` / `hue`).
+- `PaletteChoice.FromHex(hex)` finds the closest cell + slider combination. It returns `null` if the closest one is more than 12 apart (RGB distance). Then no cell is checked and the sliders stay neutral.
+- `OnPaletteChoiceChanged` (optional) is called each time the state changes while the palette is open.
+
 ## <a name="ReleaseNotes"></a>Release Notes
 
-<details open="open"><summary>Version 4.4.0</summary>
+<details open="open"><summary>Version 4.5.0</summary>
+
+>- Optional Intensity and Hue sliders (`ShowIntensitySlider`, `ShowHueSlider`), off by default
+>- `PaletteChoice` state, `ShowPaletteChoice`, `FromHex` and JSON persistence to restore the palette exactly
+>- `IColorPickerService` gains `ShowPaletteChoice` (custom implementations of the interface must add it)
+</details>
+
+<details><summary>Version 4.4.0</summary>
 
 >- Configurable z-index via `ZIndex` parameter or CSS custom property `--color-picker-z-index` (default: 9999)
 </details>
